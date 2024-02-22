@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.urls import reverse
+import random
 
 
 class CookieStand(models.Model):
@@ -15,8 +16,14 @@ class CookieStand(models.Model):
     average_cookies_per_sale = models.FloatField(default=0)
 
     def calculate_hourly_sales(self):
-        avg_min_max_customers = (self.minimum_customers_per_hour + self.maximum_customers_per_hour) / 2
-        return self.average_cookies_per_sale * avg_min_max_customers
+        hourly_sales = []
+        for _ in range(8):  # For 8 hours
+            # Generate a random number of customers for this hour
+            customers_this_hour = random.randint(self.minimum_customers_per_hour, self.maximum_customers_per_hour)
+            # Calculate sales for this hour based on the random number of customers
+            sales_this_hour = customers_this_hour * self.average_cookies_per_sale
+            hourly_sales.append(int(sales_this_hour))  # Append the sales, converted to an integer
+        return hourly_sales
 
     def __str__(self):
         return self.location
