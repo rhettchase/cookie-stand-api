@@ -14,9 +14,12 @@
 <header>
   <nav class="bg-gray-900 border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800">
         <div class="container flex flex-wrap items-center justify-between mx-auto">
-          <a href="{% url 'home' %}">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Things_Logo.svg" class="p-3 h-12 bg-white rounded" alt="Logo" />
-          </a>
+          <a href="{% url 'home' %}" class="flex items-center space-x-3 rtl:space-x-reverse">
+          <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+            <path fill-rule="evenodd" d="M2 12a10 10 0 1 1 20 0 10 10 0 0 1-20 0Zm5.5 1a.5.5 0 0 0-1 0 5 5 0 0 0 1.6 3.4 5.5 5.5 0 0 0 7.8 0 5 5 0 0 0 1.6-3.4.5.5 0 0 0-1 0h-.2l-1 .3a18.9 18.9 0 0 1-7.8-.4ZM9 8a1 1 0 0 0 0 2 1 1 0 1 0 0-2Zm6 0a1 1 0 1 0 0 2 1 1 0 1 0 0-2Z" clip-rule="evenodd"/>
+          </svg>
+          <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Cookie Stands</span>
+        </a>
           <div class="hidden w-full md:block md:w-auto" id="mobile-menu">
             <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
             {% if request.user.is_authenticated %}

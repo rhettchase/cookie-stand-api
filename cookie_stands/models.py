@@ -14,9 +14,13 @@ class CookieStand(models.Model):
     maximum_customers_per_hour = models.IntegerField(default=0)
     average_cookies_per_sale = models.FloatField(default=0)
 
+    def calculate_hourly_sales(self):
+        avg_min_max_customers = (self.minimum_customers_per_hour + self.maximum_customers_per_hour) / 2
+        return self.average_cookies_per_sale * avg_min_max_customers
+
     def __str__(self):
         return self.location
 
     def get_absolute_url(self):
-        return reverse('cookie_detail', args=[str(self.id)])
+        return reverse('cookie_stand_detail', args=[str(self.id)])
 
