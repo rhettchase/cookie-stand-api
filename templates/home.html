@@ -1,30 +1,31 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Cookie Stands - Home{% endblock %}
+{% block title %}
+  Cookie Stands - Home
+{% endblock %}
 
 {% block content %}
-  {% if user.is_authenticated %}
-    <div class="space-y-8">
+  <section class="bg-gray-50 dark:bg-gray-900">
+    {% if user.is_authenticated %}
+      <div class="border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+        <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">Hi {{ user.username }}!</h1>
+        <img src="{% static 'img/cookie_stand_animated.png' %}" alt="Delicious cookies" class="rounded-lg p-4">
+        <!-- Logout must be POST request in Django 5 -->
+        <form action="{% url 'logout' %}" method="post" class="space-y-4 md:space-y-6">
+          {% csrf_token %}
+          <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Log Out</button>
+        </form>
+      </div>
+    {% else %}
+      <div class="hero-content flex bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+        <div class="bg-gray-300 p-4">
+          <h1 class="text-5xl font-bold">Who doesn't love cookies?</h1>
+          <img src="{% static 'img/cookie_stand_animated.png' %}" alt="Delicious cookies" class="rounded-lg p-4">
 
-      <h2 class="text-4xl">Hi {{ user.username }}!</h2>
-      <p>Maybe one day you'll see a glorious home page here.</p>
-      <p>But for now just notice that List and Create are in Nav bar.</p>
-    </div>
-
-  {% else %}
-
-    <div class="">
-      <div class="hero-content flex bg-red-300 p-4 space-x-4">
-        {#  Thanks to https://unsplash.com/photos/Kw_zQBAChws?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink#}
-        {% comment %} <img src="{% static 'ashim-d-silva-things.jpg' %}" class="max-w-sm rounded-lg shadow-2xl"/> {% endcomment %}
-        <div class="bg-green-300 p-4">
-          <h1 class="text-5xl font-bold">Things</h1>
-          <p class="text-2xl p-6">Almanac, binder, cucumber, drill, envelope, friend, grill, hay, jam, koala, lanyard, mousetrap, necklace, oil, printer, quill, restroom, saline, treasure, wings, xylophone, zebra, and more!</p>
           <a href="{% url 'login' %}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Get Started</a>
         </div>
       </div>
-    </div>
-
-  {% endif %}
+    {% endif %}
+  </section>
 {% endblock %}
