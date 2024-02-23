@@ -123,3 +123,17 @@ static/CACHE/
 # poetry
 poetry.lock
 
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+__pycache__/
+.pytest_cache/
+.vercel
+.idea
+__pycache__
+package-lock.json
+static/CACHE
+node_modules/

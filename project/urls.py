@@ -18,6 +18,7 @@ from django.urls import include, path
 from rest_framework_simplejwt import views as jwt_views
 from .views import MyTokenObtainPairView
 from django.views.generic.base import TemplateView
+from django.conf.urls import handler403
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -39,3 +40,5 @@ urlpatterns = [
     path("accounts/", include("accounts.urls")),
     path("accounts/", include("django.contrib.auth.urls")),
 ]
+
+handler403 = 'cookie_stands.views_front.permission_denied_view'
