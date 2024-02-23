@@ -53,6 +53,7 @@ DATABASE_PORT=5432
   - run command `python -c "import secrets; print(secrets.token_urlsafe())"` in command line to create secret key, then add this to the `.env` file
 - See the page in browser by running `python manage.py runserver`
 - Open the page via the local server address specified in the terminal
+- Sign up and login to create cookie stands
 
 #### Tests
 
