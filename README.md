@@ -47,6 +47,7 @@ DATABASE_PORT=5432
 - Clone repo
 - Create and activate virtual environment
 - Create and configure database (e.g., ElephantSQL)
+- Create and activate virtual environment
 - Install dependencies `pip install -r requirements.txt`
 - Create copy of `.env.sample` to a `.env` file
   - update variables with relevant values for your database
