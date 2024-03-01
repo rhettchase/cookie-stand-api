@@ -3,5 +3,6 @@ from .views import CookieStandList, CookieStandDetail
 
 urlpatterns = [
     path("", CookieStandList.as_view(), name="cookie_stand_list"),
+    path('api/v1/cookie_stands/', CookieStandList.as_view(), name="cookie_stand_list"),
     path("<int:pk>/", CookieStandDetail.as_view(), name="cookie_stand_detail"),
 ]
